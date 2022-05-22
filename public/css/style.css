@@ -110,22 +110,6 @@ body {
   overflow: auto;
 }*/
 
-.page-header nav {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-}
-
-.page-header .logo {
-    display: block;
-    margin: 0 15px;
-}
-
-.page-header .logo svg {
-    max-width: 120px;
-    fill: var(--white);
-}
-
 .page-header .toggle-mob-menu {
     display: none;
     margin-left: 5px;
@@ -191,9 +175,12 @@ body {
 .page-header .admin-menu a:focus,
 .page-header .admin-menu button:hover,
 .page-header .admin-menu button:focus {
-    background: var(--page-header-bgColor-hover);
-    color: var(--blue);
-    outline: none;
+    background-color: #f9fbfd;
+    text-decoration: none;
+}
+
+.page-header .admin-menu li:hover {
+    border-right: #00b9eb 4px solid;
 }
 
 .page-header .admin-menu a:hover svg,
@@ -201,6 +188,61 @@ body {
 .page-header .admin-menu button:hover svg,
 .page-header .admin-menu button:focus svg {
     fill: var(--blue);
+}
+
+.navbar {
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+.navbar,
+.navbar > .container,
+.navbar > .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+}
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+}
+.navbar-text {
+    display: inline-block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.navbar .notification {
+    position: absolute;
+    top: 2px;
+    border: 1px solid #fff;
+    right: -3px;
+    font-size: 9px;
+    background: #f44336;
+    color: #fff;
+    min-width: 20px;
+    padding: 0 5px;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 19px;
+    /* vertical-align: middle; */
+    display: block;
+}
+.menu-link,
+.menu-link:active {
+    background-color: transparent;
+    border-color: transparent;
 }
 
 /* PAGE CONTENT STYLES
@@ -215,78 +257,10 @@ body {
     background: var(--page-content-bgColor);
 }
 
-.search-and-user {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-column-gap: 50px;
-    align-items: center;
-    background: var(--page-content-bgColor);
-    margin-bottom: 30px;
-}
-
-.search-and-user form {
-    position: relative;
-}
-
-.search-and-user [type="search"] {
-    width: 100%;
-    height: 50px;
-    font-size: 1.5rem;
-    padding-left: 15px;
-    background: var(--page-content-blockColor);
-    color: var(--white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-.search-and-user ::placeholder {
-    color: var(--page-content-txtColor);
-}
-
-.search-and-user form svg {
-    width: 26px;
-    height: 26px;
-    fill: var(--page-content-txtColor);
-}
-
-.search-and-user form button {
+.search-bar {
     position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-}
-
-.search-and-user .admin-profile {
-    display: flex;
-    align-items: center;
-}
-
-.search-and-user .admin-profile .greeting {
-    margin: 0 10px 0 20px;
-}
-
-.search-and-user .admin-profile svg {
-    width: 30px;
-    height: 30px;
-}
-
-.search-and-user .admin-profile .notifications {
-    position: relative;
-}
-
-.search-and-user .admin-profile .badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: -10px;
-    right: -3px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    font-size: 10px;
-    color: var(--white);
-    background: var(--red);
+    right: 0;
+    z-index: 999;
 }
 
 .page-content .grid {
@@ -518,7 +492,7 @@ body {
     --page-header-bgColor-hover: #b9e4e0;
     --page-header-txtColor: #2c303a;
     --page-header-headingColor: #979595;
-    --page-content-bgColor: #f1efec;
+    --page-content-bgColor: #f9fbfd;
     /* --box-shadow: 0 0 10px -2px rgba(0, 0, 0, 0.25); */
 }
 
@@ -539,12 +513,6 @@ body {
 
 .light-mode .switch [type="checkbox"]:focus + label span:first-child {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
-}
-
-@media screen and (max-width: 767px) {
-    .light-mode .search-and-user .admin-profile svg {
-        fill: var(--black);
-    }
 }
 
 /* FOOTER
