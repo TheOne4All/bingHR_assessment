@@ -7,7 +7,8 @@
 
     <title>BingHR Home Assessment</title>
 
-    <!-- Fonts -->
+    <!-- CSS Styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
 </head>
@@ -121,9 +122,9 @@
                 </svg>
             </button>
             <ul class="admin-menu">
-                <li class="menu-heading">
+                <!-- <li class="menu-heading">
                     <h3>Admin</h3>
-                </li>
+                </li> -->
                 <li>
                     <a href="#0">
                         <svg>
@@ -133,7 +134,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#0">
+                    <a href="{{ url('/') }}">
                         <svg>
                             <use xlink:href="#users"></use>
                         </svg>
@@ -194,7 +195,7 @@
                 <li>
                     <a href="#0">
                         <svg>
-                            <use xlink:href="#charts"></use>
+                            <use xlink:href="#trends"></use>
                         </svg>
                         <span>Accounts</span>
                     </a>
@@ -245,11 +246,51 @@
                 </div>
             </div>
         </section>
-        <section class="grid">
-            <article>
 
-            </article>
+        <!-- ======= About Me Section ======= -->
+        <section id="search_result" class="about bg-white pt-3 pb-3">
+            <div class="container">
+
+                <div class="section-title">
+                    <h4>List Users</h4>
+                    <!-- <p>Displays the list of users</p> -->
+                </div>
+
+                <div class="row">
+                    <?php //if (is_array($allSchools) && !empty($allSchools)): ?>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>Name</th>
+                                    <th>Create-Date</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    <?php //foreach ($pageRecords as $pageRecord['user_id'] => $pageRecord) {?>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <?//php }?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <?php //else:echo '<div class="col-12 text-center pb-4 pt-4">No Record(s) Found</div>';endif;?>
+                </div>
+
+            </div>
         </section>
+        <!-- End About Me Section -->
+
         <footer class="page-footer" style="float:left; padding:20px 0;">
             <span>&copy; Copyright 2022 </span>
             <b><a href="https://binghr.io/" target="_blank">BingHR.io</a></b>
