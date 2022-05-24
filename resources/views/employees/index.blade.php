@@ -1,3 +1,42 @@
+<?php
+$root_dir = $_SERVER['DOCUMENT_ROOT'] . $_SERVER['REQUEST_URI'];
+require_once $root_dir . 'helpers/ModalHelper.php';
+$modalHelper = new ModalHelperer;
+
+$addStaff = [
+    'name' => 'addStaff',
+    'title' => 'Add Staff',
+    'subtitle' => 'Create a Single Examinee Record',
+    // 'file' => 'material/resources/hr/staffform.tpl',
+    // 'url' => 'hr/add',
+    'size' => 'lg',
+    'submit' => 'Add',
+    'classlist' => 'slide-up enable-scroll',
+];
+$modalHelper->modal($addStaff)->modal_body()->modal_end();
+
+$editStaff = [
+    'name' => 'editStaff',
+    'title' => 'Edit Staff',
+    'subtitle' => 'Update a Single Examinee Record',
+    'file' => 'material/resources/hr/staffform.tpl',
+    'url' => 'hr/update',
+    'submit' => 'Update',
+    'size' => 'lg',
+    'classlist' => 'slide-up enable-scroll',
+];
+
+$deleteStaff = [
+    'name' => 'deleteStaff',
+    'title' => 'Delete Staff',
+    'url' => 'hr/delete',
+    'cancel' => 'No',
+    'submit' => 'Yes',
+    'classlist' => 'stick-up',
+    'size' => 'sm',
+];
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -215,7 +254,7 @@
                 </div>
 
                 <div class="row">
-                    <?php //if (is_array($allSchools) && !empty($allSchools)): ?>
+                    @if (count($allEmployees) != '')
                     <div class="card-body pl-0 pr-0">
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -226,14 +265,23 @@
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <?php //foreach ($pageRecords as $pageRecord['user_id'] => $pageRecord) {?>
+                                    @foreach ($allEmployees as $employee)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ucwords(strtolower($employee->lastname.', '.$employee->firstname))}}</td>
+                                        <td>{{$employee->created_at}}</td>
+                                        <td>{{ucwords(strtolower($employee->role))}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-white" title="Edit"
+                                                    data-toggle="modal" data-target="#editStaff<?=$employee['id']?>"><i
+                                                        class="material-icons">edit</i></button>
+                                                <button type="button" class="btn btn-white" data-toggle="modal"
+                                                    data-target="#deleteStaff<?=$employee['id']?>" title="Delete"><i
+                                                        class="material-icons">delete</i></button>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <?//php }?>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -242,7 +290,9 @@
                             <div class="col-md-6"></div>
                         </div>
                     </div>
-                    <?php //else:echo '<div class="col-12 text-center pb-4 pt-4">No Record(s) Found</div>';endif;?>
+                    @else
+                    <div class="col-12 text-center pb-4 pt-4">No Record(s) Found</div>
+                    @endif
                 </div>
 
             </div>
@@ -255,6 +305,9 @@
         </footer>
         <!-- template js script -->
         <script src="js/template.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </section>
 </body>
 
