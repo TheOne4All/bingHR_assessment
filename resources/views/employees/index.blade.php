@@ -1,15 +1,15 @@
 <?php
-$path_public = config('global.public_path');
-echo $path_public;
-require_once $path_public . 'helpers/ModalHelper.php';
-$path_resources = str_replace('public', 'resources', $path_public);
+// $path_public = config('global.public_path');
+echo public_path();
+require_once public_path() . '\helpers\ModalHelper.php';
+$path_resources = str_replace('public', 'resources', public_path());
 $modalHelper = new ModalHelperer;
 
 $addStaff = [
     'name' => 'addStaff',
     'title' => 'Add User',
     'subtitle' => 'Create a Single User Record',
-    'file' => $path_resources . 'views/employees/form.blade.php',
+    'file' => $path_resources . '\views\employees\form.blade.php',
     'url' => route("employees.store"),
     'size' => 'lg',
     'submit' => 'Add User',
@@ -308,7 +308,7 @@ $editStaff = [
     'name' => 'editStaff',
     'title' => 'Edit User',
     'subtitle' => 'Update a Single User Record',
-    'file' => $path_resources . 'views/employees/form.blade.php',
+    'file' => $path_resources . '\views\employees\form.blade.php',
     'url' => route("employees.update", $employee->id),
     'submit' => 'Update User',
     'cancel' => 'Cancel',
@@ -319,7 +319,7 @@ $editStaff = [
 $deleteStaff = [
     'name' => 'deleteStaff',
     'title' => 'Delete Staff',
-    'file' => $path_resources . 'views/employees/delete.blade.php',
+    'file' => $path_resources . '\views\employees\delete.blade.php',
     'url' => route("employees.destroy", $employee->id),
     'cancel' => 'No',
     'submit' => 'Yes',
