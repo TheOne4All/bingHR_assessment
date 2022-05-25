@@ -1,6 +1,6 @@
 <?php
-csrf_field();
-if (isset($employee->id)): method_field('PATCH');endif;
+echo csrf_field();
+if (isset($employee->id)): echo method_field('PUT');endif;
 ?>
 <div class="card">
     <div class="card-body">

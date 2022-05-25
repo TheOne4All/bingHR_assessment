@@ -130,7 +130,7 @@ class ModalHelperer
         endif;
         if (!is_null($this->url)):
             $form_name_id = 'form_' . $this->name_key;
-            echo '<form id="' . $form_name_id . '" name="' . $form_name_id . '" method="delete" enctype="multipart/form-data" action="' . $this->url . '">';
+            echo '<form id="' . $form_name_id . '" name="' . $form_name_id . '" method="POST" enctype="multipart/form-data" action="' . $this->url . '">';
         endif;
         if (!is_null($this->input)):
             echo $this->input;

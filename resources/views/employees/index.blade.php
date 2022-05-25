@@ -1,6 +1,4 @@
 <?php
-// $path_public = config('global.public_path');
-echo public_path();
 require_once public_path() . '\helpers\ModalHelper.php';
 $path_resources = str_replace('public', 'resources', public_path());
 $modalHelper = new ModalHelperer;
