@@ -124,7 +124,8 @@ if (isset($employee->id)): echo method_field('PUT');endif;
             <div class="col-sm-2 bold">Delete</div>
         </div>
         <div class="row form-group">
-            <div class="col-sm-6">Super-Admin <input class="ml-3" name="permission[]" type="radio" value="1" checked />
+            <div class="col-sm-6">Super-Admin <input class="ml-3" name="permission[]" type="radio" value="1"
+                    <?php if (isset($employee->permission) && in_array(1, json_decode($employee->permission))) {echo 'checked';}?> />
             </div>
             <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
@@ -137,7 +138,9 @@ if (isset($employee->id)): echo method_field('PUT');endif;
             </div>
         </div>
         <div class="row form-group">
-            <div class="col-sm-6">Admin <input class="ml-3" name="permission[]" type="radio" value="2" /></div>
+            <div class="col-sm-6">Admin <input class="ml-3" name="permission[]" type="radio" value="2"
+                    <?php if (isset($employee->permission) && in_array(2, json_decode($employee->permission))) {echo 'checked';}?> />
+            </div>
             <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
@@ -147,7 +150,9 @@ if (isset($employee->id)): echo method_field('PUT');endif;
             </div>
         </div>
         <div class="row form-group">
-            <div class="col-sm-6">Employee <input class="ml-3" name="permission[]" type="radio" value="3" /></div>
+            <div class="col-sm-6">Employee <input class="ml-3" name="permission[]" type="radio" value="3"
+                    <?php if (isset($employee->permission) && in_array(3, json_decode($employee->permission))) {echo 'checked';}?> />
+            </div>
             <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
@@ -157,7 +162,9 @@ if (isset($employee->id)): echo method_field('PUT');endif;
             </div>
         </div>
         <div class="row form-group">
-            <div class="col-sm-6">HR Admin <input class="ml-3" name="permission[]" type="radio" value="4" /></div>
+            <div class="col-sm-6">HR Admin <input class="ml-3" name="permission[]" type="radio" value="4"
+                    <?php if (isset($employee->permission) && in_array(4, json_decode($employee->permission))) {echo 'checked';}?> />
+            </div>
             <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
@@ -168,6 +175,7 @@ if (isset($employee->id)): echo method_field('PUT');endif;
                     onclick="return false;" />
                 </d iv>
             </div>
+
         </div>
 
         <!-- /.card-body -->
