@@ -276,7 +276,7 @@ switch (json_decode($employee->permission)) {
                                         <td class="row">
                                             <div class="col-3">
                                                 @if (!is_null($employee->img))
-                                                <img class="shadow rounded-circle img-thumbnail"
+                                                <img class="shadow rounded-circle img-thumbnail" width="60px"
                                                     src="{{ url('media/'.$employee->img) }}" />
                                                 @else
                                                 <i class="material-icons shadow rounded-circle p-3">person</i>
