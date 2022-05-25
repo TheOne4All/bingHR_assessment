@@ -1,6 +1,19 @@
 # bingHR_assessment
 
-BingHR interview home assessment
+BingHR interview home assessment. A user should be able to perform a CRUD operation on the application. There is a 'Add User' button at the top corner; when clicked should display a modal, as seen in the second attached image.
+
+We also have an Action column in the table where a user can click on the delete icon to delete a user and an edit icon where a user can click to display the second image but pre-fill with the user's info. At that point, the 'Add User' should be replaced with 'Update User'.
+
+Deliverables:
+
+1. Every bit of the design in the image above must be the same as the one in your application.
+2. The entry point must be the user’s list, where the Users menu is highlighted by default.
+3. A user should be able to add users, including their permission.
+4. A user should be able to delete users.
+5. A user should be able to update a user.
+6. Feel free to add extra functionality as you see fit if you have the time.
+
+Technologies: The application should be built with Laravel, HTML, CSS, and Javascript (Jquery). You can use the material UI/bootstrap/Tailwind framework if you wish
 
 #####################################
 Installation Requirements
