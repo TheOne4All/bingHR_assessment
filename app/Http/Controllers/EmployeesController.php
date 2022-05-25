@@ -44,7 +44,7 @@ class EmployeesController extends Controller
         $employee->email = $request->email;
         $employee->phone = $request->phone;
         $employee->role = $request->role;
-        $employee->permission = $request->permission;
+        $employee->permission = json_encode($request->permission);
         $employee->password = $request->password;
         $employee->save();
         return redirect()->route('employees.index')->with('success', 'Employee has been created successfully.');
@@ -81,7 +81,7 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $employee = Employee::find($id);
+        // $employee = Employee::find($request->$id);
         $employee->employee_id = $request->employee_id;
         $employee->lastname = $request->lastname;
         $employee->firstname = $request->firstname;
@@ -89,7 +89,7 @@ class EmployeesController extends Controller
         $employee->email = $request->email;
         $employee->phone = $request->phone;
         $employee->role = $request->role;
-        $employee->permission = $request->permission;
+        $employee->permission = json_encode($request->permission);
         $employee->password = $request->password;
         $employee->save();
         return redirect()->route('employees.index')->with('success', 'Employee has been updated successfully.');

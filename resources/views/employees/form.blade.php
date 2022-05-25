@@ -51,14 +51,28 @@ if (isset($employee->id)): echo method_field('PUT');endif;
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="form-group is-filled">
-                    <select form="" name="role" class="form-control selectpicker" data-style="btn btn-link" required>
-                        <option>Select Role Typle</option>
-                        <option value="Team Lead">Team Lead</option>
-                        <option value="HR">HR</option>
-                        <option value="CEO and Founder">CEO and Founder</option>
-                        <option value="Web Designer">Web Designer</option>
-                        <option value="App Designer">App Designer</option>
+                <div class="form-group">
+                    <select name="role" class="form-control" data-style="btn btn-link" required>
+                        <option value='0'>Select Role Typle</option>
+                        <option value="Team Lead"
+                            <?php if (isset($employee->role) && $employee->role == 'Team Lead') {echo 'selected';}?>>
+                            Team Lead
+                        </option>
+                        <option value="HR"
+                            <?php if (isset($employee->role) && $employee->role == 'HR') {echo 'selected';}?>>HR
+                        </option>
+                        <option value="CEO and Founder"
+                            <?php if (isset($employee->role) && $employee->role == 'CEO and Founder') {echo 'selected';}?>>
+                            CEO
+                            and Founder</option>
+                        <option value="Web Designer"
+                            <?php if (isset($employee->role) && $employee->role == 'Web Designer') {echo 'selected';}?>>
+                            Web
+                            Designer</option>
+                        <option value="App Designer"
+                            <?php if (isset($employee->role) && $employee->role == 'App Designer') {echo 'selected';}?>>
+                            App
+                            Designer</option>
                     </select>
                 </div>
             </div>
@@ -98,51 +112,52 @@ if (isset($employee->id)): echo method_field('PUT');endif;
         <div class="row form-group">
             <div class="col-sm-6">Super-Admin <input class="ml-3" name="permission[]" type="radio" value="1" checked />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
         </div>
         <div class="row form-group">
             <div class="col-sm-6">Admin <input class="ml-3" name="permission[]" type="radio" value="2" /></div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1"
-                    onclick="return false;" /></div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1"
-                    onclick="return false;" /></div>
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" onclick="return false;" />
+            </div>
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" onclick="return false;" />
+            </div>
         </div>
         <div class="row form-group">
             <div class="col-sm-6">Employee <input class="ml-3" name="permission[]" type="radio" value="3" /></div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1"
-                    onclick="return false;" /></div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1"
-                    onclick="return false;" /></div>
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" onclick="return false;" />
+            </div>
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" onclick="return false;" />
+            </div>
         </div>
         <div class="row form-group">
             <div class="col-sm-6">HR Admin <input class="ml-3" name="permission[]" type="radio" value="4" /></div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
             </div>
-            <div class="col-sm-2"><input class="" name="permission[]" type="checkbox" value="1" checked
+            <div class="col-sm-2"><input class="" name="access[]" type="checkbox" value="1" checked
                     onclick="return false;" />
+                </d iv>
             </div>
+
         </div>
 
+        <!-- /.card-body -->
     </div>
-    <!-- /.card-body -->
-</div>
 
-<!-- /.card -->
+    <!-- /.card -->

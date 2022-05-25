@@ -249,24 +249,24 @@ $modalHelper->modal($addStaff)->modal_body()->modal_end();
                                 <tbody>
                                     @foreach ($allEmployees as $employee)
                                     <?php
-$permission = explode(',', $employee->permission);
-switch ($permission[0]) {
-    case '1':
+var_dump(json_decode($employee->permission));
+switch (json_decode($employee->permission)) {
+    case array(1):
         $user_permission = 'Super-Admin';
         $bgColor = 'bg-danger';
         $txtColor = 'text-white';
         break;
-    case '2':
+    case array(2):
         $user_permission = 'Admin';
         $bgColor = 'bg-primary';
         $txtColor = 'text-white';
         break;
-    case '3':
+    case array(3):
         $user_permission = 'Employee';
         $bgColor = 'bg-info';
         $txtColor = 'text-white';
         break;
-    case '4':
+    case array(4):
         $user_permission = 'HR-Admin';
         $bgColor = 'bg-success';
         $txtColor = 'text-white';
@@ -289,7 +289,7 @@ switch ($permission[0]) {
                                                 style="display:block; text-align:center; width:150px;">{{$user_permission}}</span>
                                         </td>
                                         <td>{{date_format($employee->created_at,"d M, Y")}}</td>
-                                        <td>{{ucwords(strtolower($employee->role))}}</td>
+                                        <td>{{($employee->role)}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-white" title="Edit"
