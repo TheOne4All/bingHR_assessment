@@ -1,40 +1,23 @@
 <?php
-$root_dir = $_SERVER['DOCUMENT_ROOT'] . $_SERVER['REQUEST_URI'];
-require_once $root_dir . 'helpers/ModalHelper.php';
+$path_public = config('global.public_path');
+echo $path_public;
+require_once $path_public . 'helpers/ModalHelper.php';
+$path_resources = str_replace('public', 'resources', $path_public);
 $modalHelper = new ModalHelperer;
 
 $addStaff = [
     'name' => 'addStaff',
-    'title' => 'Add Staff',
-    'subtitle' => 'Create a Single Examinee Record',
-    // 'file' => 'material/resources/hr/staffform.tpl',
-    // 'url' => 'hr/add',
+    'title' => 'Add User',
+    'subtitle' => 'Create a Single User Record',
+    'file' => $path_resources . 'views/employees/form.blade.php',
+    'url' => route("employees.store"),
     'size' => 'lg',
-    'submit' => 'Add',
+    'submit' => 'Add User',
+    'cancel' => 'Cancel',
     'classlist' => 'slide-up enable-scroll',
 ];
 $modalHelper->modal($addStaff)->modal_body()->modal_end();
 
-$editStaff = [
-    'name' => 'editStaff',
-    'title' => 'Edit Staff',
-    'subtitle' => 'Update a Single Examinee Record',
-    'file' => 'material/resources/hr/staffform.tpl',
-    'url' => 'hr/update',
-    'submit' => 'Update',
-    'size' => 'lg',
-    'classlist' => 'slide-up enable-scroll',
-];
-
-$deleteStaff = [
-    'name' => 'deleteStaff',
-    'title' => 'Delete Staff',
-    'url' => 'hr/delete',
-    'cancel' => 'No',
-    'submit' => 'Yes',
-    'classlist' => 'stick-up',
-    'size' => 'sm',
-];
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +62,7 @@ $deleteStaff = [
                         <span class="ml-2">Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="{{ url('/') }}">
                         <i class="material-icons">person</i>
                         <span class="ml-2">Users</span>
@@ -260,15 +243,54 @@ $deleteStaff = [
                             <table class="table table-hover">
                                 <thead style="background-color: #F9FBFD;">
                                     <th>Name</th>
+                                    <th></th>
                                     <th>Create Date</th>
                                     <th>Role</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($allEmployees as $employee)
+                                    <?php
+$permission = explode(',', $employee->permission);
+switch ($permission[0]) {
+    case '1':
+        $user_permission = 'Super-Admin';
+        $bgColor = 'bg-danger';
+        $txtColor = 'text-white';
+        break;
+    case '2':
+        $user_permission = 'Admin';
+        $bgColor = 'bg-primary';
+        $txtColor = 'text-white';
+        break;
+    case '3':
+        $user_permission = 'Employee';
+        $bgColor = 'bg-info';
+        $txtColor = 'text-white';
+        break;
+    case '4':
+        $user_permission = 'HR-Admin';
+        $bgColor = 'bg-success';
+        $txtColor = 'text-white';
+        break;
+}
+?>
                                     <tr>
-                                        <td>{{ucwords(strtolower($employee->lastname.', '.$employee->firstname))}}</td>
-                                        <td>{{$employee->created_at}}</td>
+                                        <td class="row">
+                                            <div class="col-3"><i
+                                                    class="material-icons shadow rounded-circle p-3">person</i>
+                                            </div>
+                                            <div class="col-9">
+                                                <span
+                                                    class="bold d-block">{{ucwords(strtolower($employee->lastname.', '.$employee->firstname))}}</span>
+                                                <span class="d-block">{{strtolower($employee->email)}}</span>
+                                            </div>
+
+                                        </td>
+                                        <td><span class="{{$bgColor.' '.$txtColor}} p-2 rounded-lg"
+                                                style="display:block; text-align:center; width:150px;">{{$user_permission}}</span>
+                                        </td>
+                                        <td>{{date_format($employee->created_at,"d M, Y")}}</td>
                                         <td>{{ucwords(strtolower($employee->role))}}</td>
                                         <td>
                                             <div class="btn-group">
@@ -281,6 +303,33 @@ $deleteStaff = [
                                             </div>
                                         </td>
                                     </tr>
+                                    <?php
+$editStaff = [
+    'name' => 'editStaff',
+    'title' => 'Edit User',
+    'subtitle' => 'Update a Single User Record',
+    'file' => $path_resources . 'views/employees/form.blade.php',
+    'url' => route("employees.update", $employee->id),
+    'submit' => 'Update User',
+    'cancel' => 'Cancel',
+    'size' => 'lg',
+    'classlist' => 'slide-up enable-scroll',
+];
+
+$deleteStaff = [
+    'name' => 'deleteStaff',
+    'title' => 'Delete Staff',
+    'file' => $path_resources . 'views/employees/delete.blade.php',
+    'url' => route("employees.destroy", $employee->id),
+    'cancel' => 'No',
+    'submit' => 'Yes',
+    'classlist' => 'stick-up',
+    'size' => 'sm',
+];
+$modalHelper->modal($editStaff, $employee->id)->modal_field('employee', $employee)->modal_body()->modal_end();
+$modalHelper->modal($deleteStaff, $employee->id)->modal_field('id', $employee->id)->modal_body()->modal_end();
+?>
+
                                     @endforeach
                                 </tbody>
                             </table>
@@ -310,6 +359,11 @@ $deleteStaff = [
         <script src="js/bootstrap.min.js"></script>
     </section>
 </body>
+
+
+
+
+
 
 
 </html>

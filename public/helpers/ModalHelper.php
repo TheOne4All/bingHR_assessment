@@ -130,7 +130,7 @@ class ModalHelperer
         endif;
         if (!is_null($this->url)):
             $form_name_id = 'form_' . $this->name_key;
-            echo '<form id="' . $form_name_id . '" name="' . $form_name_id . '" method="POST" enctype="multipart/form-data" action="' . $this->url . '">';
+            echo '<form id="' . $form_name_id . '" name="' . $form_name_id . '" method="delete" enctype="multipart/form-data" action="' . $this->url . '">';
         endif;
         if (!is_null($this->input)):
             echo $this->input;
@@ -160,7 +160,7 @@ class ModalHelperer
 
             case in_array('slide-right', $this->classlistArray):
                 if (!is_null($this->url)): empty($this->form) ? null : $this->form = 'form="' . $this->form . '"';
-                    echo '<button class="btn btn-success btn-block" type="submit" ' . $this->form . '>' . $this->submit . '</button></form>';
+                    echo '<button class="btn btn-primary btn-block" type="submit" ' . $this->form . '>' . $this->submit . '</button></form>';
                     if (!is_null($this->cancel)):
                         echo '<button class="btn btn-block cancel btn-danger" data-dismiss="modal">' . $this->cancel . '</button>';
                     endif;
@@ -172,9 +172,9 @@ class ModalHelperer
                 if (!is_null($this->url)):
                     echo '<div style="display:flex; justify-content:flex-end;">';
                     if (!is_null($this->cancel)): empty($this->form) ? null : $this->form = 'form="' . $this->form . '"';
-                        echo '<button class="btn m-t-10 m-r-10 cancel btn-danger" type="button" data-dismiss="modal">' . $this->cancel . '</button>';
+                        echo '<button class="btn mt-2 mr-2 cancel btn-danger" type="button" data-dismiss="modal">' . $this->cancel . '</button>';
                     endif;
-                    echo '<button class="btn btn-success m-t-10" type="submit" ' . $this->form . '>' . $this->submit . '</button></div></form>';
+                    echo '<button class="btn btn-primary mt-2" type="submit" ' . $this->form . '>' . $this->submit . '</button></div></form>';
                 endif;
                 echo "</div></div></div></div></section>";
                 break;

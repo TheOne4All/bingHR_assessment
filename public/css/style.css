@@ -73,6 +73,10 @@ body {
     font: 16px/1.5 "Lato", sans-serif;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 /* HEADER STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .page-header {
@@ -179,8 +183,10 @@ body {
     text-decoration: none;
 }
 
-.page-header .admin-menu li:hover {
+.page-header .admin-menu li:hover,
+.active {
     border-right: #00b9eb 4px solid;
+    color: #00b9eb;
 }
 
 .page-header .admin-menu a:hover svg,
@@ -868,4 +874,12 @@ body {
 
 .modal .modal-body {
     padding-top: 0;
+}
+
+.modal input[type="checkbox"],
+.modal input[type="radio"] {
+    appearance: auto;
+    -webkit-appearance: auto;
+    left: 0;
+    position: relative;
 }
