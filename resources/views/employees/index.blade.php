@@ -249,7 +249,6 @@ $modalHelper->modal($addStaff)->modal_body()->modal_end();
                                 <tbody>
                                     @foreach ($allEmployees as $employee)
                                     <?php
-var_dump(json_decode($employee->permission));
 switch (json_decode($employee->permission)) {
     case array(1):
         $user_permission = 'Super-Admin';
