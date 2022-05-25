@@ -279,7 +279,8 @@ switch (json_decode($employee->permission)) {
                                                 <img class="shadow rounded-circle img-thumbnail" width="60px"
                                                     src="{{ url('media/'.$employee->img) }}" />
                                                 @else
-                                                <i class="material-icons shadow rounded-circle p-3">person</i>
+                                                <img class="shadow rounded-circle img-thumbnail" width="60px"
+                                                    src="{{ url('media/user_profile.png') }}" />
                                                 @endif
                                             </div>
                                             <div class="col-9">
@@ -361,6 +362,7 @@ $modalHelper->modal($deleteStaff, $employee->id)->modal_field('id', $employee->i
         <script src="js/bootstrap.min.js"></script>
     </section>
 </body>
+
 
 
 
