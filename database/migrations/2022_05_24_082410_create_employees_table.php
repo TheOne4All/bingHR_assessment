@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->mediumText('permission');
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

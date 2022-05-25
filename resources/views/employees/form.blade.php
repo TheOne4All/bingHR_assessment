@@ -103,6 +103,20 @@ if (isset($employee->id)): echo method_field('PUT');endif;
                 </div>
             </div>
         </div>
+        <div class="row form-group">
+            <div class="col-sm-12">
+                <label class="bold">Upload Photo: </label>
+                <div class="form-group form-file-upload form-file-multiple">
+                    <input type="file" name="img" class="inputFileHidden">
+                    <?php if (isset($employee->img)): ?>
+                    <div class="fileinput-new thumbnail mt-2">
+                        <img src="<?=url('media/' . $employee->img)?>" class="shadow rounded-circle" width="128px"
+                            alt="..." style="border-radius:50%">
+                    </div>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
         <div class="row form-group pt-3 pb-3" style="background-color: #eeeeee;">
             <div class="col-sm-6 bold">Module Permission</div>
             <div class="col-sm-2 bold">Read</div>
@@ -154,7 +168,6 @@ if (isset($employee->id)): echo method_field('PUT');endif;
                     onclick="return false;" />
                 </d iv>
             </div>
-
         </div>
 
         <!-- /.card-body -->

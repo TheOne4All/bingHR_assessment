@@ -37,6 +37,12 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         $employee = new Employee;
+        if ($request->file('img')) {
+            $file = $request->file('img');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path() . '\media', $filename);
+            $employee->img = $filename;
+        }
         $employee->employee_id = $request->employee_id;
         $employee->lastname = $request->lastname;
         $employee->firstname = $request->firstname;
@@ -81,7 +87,12 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        // $employee = Employee::find($request->$id);
+        if ($request->file('img')) {
+            $file = $request->file('img');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path() . '\media', $filename);
+            $employee->img = $filename;
+        }
         $employee->employee_id = $request->employee_id;
         $employee->lastname = $request->lastname;
         $employee->firstname = $request->firstname;

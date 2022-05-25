@@ -274,8 +274,13 @@ switch (json_decode($employee->permission)) {
 ?>
                                     <tr>
                                         <td class="row">
-                                            <div class="col-3"><i
-                                                    class="material-icons shadow rounded-circle p-3">person</i>
+                                            <div class="col-3">
+                                                @if (!is_null($employee->img))
+                                                <img class="shadow rounded-circle img-thumbnail"
+                                                    src="{{ url('media/'.$employee->img) }}" />
+                                                @else
+                                                <i class="material-icons shadow rounded-circle p-3">person</i>
+                                                @endif
                                             </div>
                                             <div class="col-9">
                                                 <span
@@ -356,6 +361,7 @@ $modalHelper->modal($deleteStaff, $employee->id)->modal_field('id', $employee->i
         <script src="js/bootstrap.min.js"></script>
     </section>
 </body>
+
 
 
 
